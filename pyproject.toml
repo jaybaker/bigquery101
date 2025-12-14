@@ -1,7 +1,7 @@
 [project]
 name = "bigquery101"
 version = "0.1.0"
-description = "Add your description here"
+description = "Google BigQuery boiler plate code"
 readme = "README.md"
 authors = [{ name = "Jay Baker", email = "jay@dynasolve.com" }]
 requires-python = ">=3.12"
@@ -12,6 +12,13 @@ dependencies = [
     "polars>=1.36.1",
     "pyarrow>=22.0.0",
 ]
+license = { text = "MIT" }
+keywords = ["bigquery"]
+
+[project.urls]
+Homepage = "https://github.com/jaybaker/bigquery101"
+Repository = "https://github.com/jaybaker/bigquery101"
+Issues = "https://github.com/jaybaker/bigquery101/issues"
 
 [build-system]
 requires = ["hatchling"]
@@ -30,10 +37,7 @@ quote-style = "single"
 docstring-code-format = true
 
 [dependency-groups]
-dev = [
-    "pytest>=9.0.2",
-    "pytest-dotenv>=0.5.2",
-]
+dev = ["pytest>=9.0.2", "pytest-dotenv>=0.5.2"]
 
 [tool.pytest.ini_options]
 markers = ["integration: end-to-end tests hitting real BigQuery"]
