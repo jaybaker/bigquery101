@@ -37,7 +37,11 @@ quote-style = "single"
 docstring-code-format = true
 
 [dependency-groups]
-dev = ["pytest>=9.0.2", "pytest-dotenv>=0.5.2"]
+dev = [
+    "pytest>=9.0.2",
+ "pytest-dotenv>=0.5.2",
+ "twine>=6.2.0",
+]
 
 [tool.pytest.ini_options]
 markers = ["integration: end-to-end tests hitting real BigQuery"]
