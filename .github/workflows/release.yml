@@ -10,7 +10,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
 
-    # GitHub "environment" name – we'll create this in repo settings
+    # GitHub "environment" name -- create this in repo settings
     environment:
       name: pypi
 
@@ -30,17 +30,13 @@ jobs:
       - name: Install Python
         run: uv python install 3.12
 
+      # Don't ship a broken wheel: run the hermetic unit tests first.
+      - name: Run unit tests
+        run: uv run pytest -m "not integration"
+
       # Build sdist + wheel via uv
       - name: Build package
         run: uv build
-
-      # Optional but recommended: quick smoke tests so we don’t ship a broken wheel
-      # You can comment these out initially and add them later.
-      # - name: Smoke test (wheel)
-      #   run: uv run --isolated --no-project --with dist/*.whl -m your_package_module --help
-      #
-      # - name: Smoke test (source distribution)
-      #   run: uv run --isolated --no-project --with dist/*.tar.gz -m your_package_module --help
 
       # Publish to PyPI using Trusted Publishing
       - name: Publish to PyPI
